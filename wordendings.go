@@ -40,7 +40,7 @@ func GetWordWithEnding(root string, endings []string, count int) string {
 
 	// “яблок”, [“о”, “а”, “”]
 	// 0 к, 1 ко, 2ка - 4ка, 5 к - 20 к, 21 ко, 22 ка 24 ка, 25
-	if secondLastkDigit(count) == 1 {
+	if secondLastkDigit(count) == 1 && count >10 {
 		answer += endings[2]
 	} else {
 
