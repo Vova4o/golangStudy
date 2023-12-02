@@ -12,7 +12,7 @@ func readTextFile() []string {
 	//Pass the file name to the ReadFile() function from
 	//the ioutil package to get the content of the file.
 
-	content, error := os.ReadFile("c:\\russian_nouns.txt")
+	content, error := os.ReadFile("\\russian_nouns.txt")
 
 	// defer .Close()
 	// Check whether the 'error' is nil or not. If it
@@ -48,6 +48,8 @@ func shrinkByLen(arr []string, a int) []string {
 	newArr := []string{}
 
 	for _, val := range arr {
+		// fmt.Println("Len(val)", len(val))
+		// fmt.Println("a", a)
 		if len(val) <= a {
 			newArr = append(newArr, val)
 		}
@@ -79,14 +81,14 @@ func main() {
 		fmt.Println("Если хотите закончить программу, напишите - конец")
 		fmt.Println("Если вы хотите ограничить длину поиска, напишите - число")
 		fmt.Println("Enter letter: ")
-		fmt.Scanf("%s", &letter)
-		if letter == "конец" {
+		fmt.Scanf("%s\n", &letter)
+		if letter == "к" {
 			endProgram = true
 		}
-		if letter == "число" {
+		if letter == "ч" {
 			var a int
 			fmt.Println("Введите число: ")
-			fmt.Scanf("%d", &a)
+			fmt.Scanf("%d\n", &a)
 			arr = shrinkByLen(arr, a)
 		}
 		// arr = shrinkByLen(arr, len(letter))
