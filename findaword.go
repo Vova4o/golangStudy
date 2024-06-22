@@ -67,10 +67,10 @@ func main() {
 		fmt.Println("Если вы хотите ограничить длину поиска, напишите - число")
 		fmt.Println("Введите букву: ")
 		fmt.Scanf("%s\n", &letter)
-		if letter == "к" {
+		if letter == "конец" {
 			endProgram = true
 		}
-		if letter == "ч" {
+		if letter == "число" {
 			var a int
 			fmt.Println("Введите число: ")
 			fmt.Scanf("%d\n", &a)
