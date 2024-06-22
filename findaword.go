@@ -7,18 +7,14 @@ import (
 	"strings"
 )
 
+// readTextFile reads the content of a text file and returns it as array of strings.
 func readTextFile() []string {
+	// Pass the file name to the ReadFile() function from
+	// the ioutil package to get the content of the file.
 
-	//Pass the file name to the ReadFile() function from
-	//the ioutil package to get the content of the file.
+	content, error := os.ReadFile("russian_nouns.txt")
 
-	content, error := os.ReadFile("\\russian_nouns.txt")
-
-	// defer .Close()
-	// Check whether the 'error' is nil or not. If it
-	//is not nil, then print the error and exit.
 	if error != nil {
-
 		log.Fatal(error)
 	}
 
@@ -26,12 +22,12 @@ func readTextFile() []string {
 	str := string(content)
 
 	arr := strings.Split(str, "\n")
-	//Print the string str
+	// Print the string str
 	return arr
 }
 
-func findaMatch(arr []string, letter string) []string {
-
+// findaMatch finds a match in an array of strings and returns a new array of strings.
+func findMatch(arr []string, letter string) []string {
 	newArr := []string{}
 
 	for _, val := range arr {
@@ -43,8 +39,8 @@ func findaMatch(arr []string, letter string) []string {
 	return newArr
 }
 
+// shrinkByLen returns only those strings from an array of strings that are shorter than a given length.
 func shrinkByLen(arr []string, a int) []string {
-
 	newArr := []string{}
 
 	for _, val := range arr {
@@ -56,23 +52,12 @@ func shrinkByLen(arr []string, a int) []string {
 	}
 
 	return newArr
-
 }
-
-// func letterOrNumber(s string)  {
-
-// }
 
 func main() {
 	arr := readTextFile()
 
 	fmt.Println(len(arr))
-	// var letter string
-	// fmt.Scanf("%s", &letter)
-
-	// fmt.Println(string(letter))
-
-	// fmt.Println(findaMatch(arr, letter))
 
 	endProgram := false
 
@@ -80,7 +65,7 @@ func main() {
 		var letter string
 		fmt.Println("Если хотите закончить программу, напишите - конец")
 		fmt.Println("Если вы хотите ограничить длину поиска, напишите - число")
-		fmt.Println("Enter letter: ")
+		fmt.Println("Введите букву: ")
 		fmt.Scanf("%s\n", &letter)
 		if letter == "к" {
 			endProgram = true
@@ -92,7 +77,7 @@ func main() {
 			arr = shrinkByLen(arr, a)
 		}
 		// arr = shrinkByLen(arr, len(letter))
-		arr = findaMatch(arr, letter)
+		arr = findMatch(arr, letter)
 		fmt.Println(arr)
 		fmt.Println(len(arr))
 	}
